@@ -30,6 +30,9 @@ var Game = function(initialString) {
     this.values = this.members.map(function(item) { return item.value; } );
     //console.log(cells);
     var group = this;
+    this.emptyCells = this.members.filter(function(cell) {
+      return cell.value === '.';
+    });
     this.members.forEach(function(member) {
       member[type] = group;
       //console.log(member);
@@ -83,10 +86,22 @@ var Game = function(initialString) {
 
 
 };
+
+Game.prototype.solve = function() {
+  // look in each group for unsolved squares.
+  // check each unsolved square for possibilities
+  // check each other square in group for that possibility
+};
+
+Game.prototype.print = function() {
+  //
+};
+
 var game = new Game(trial);
 // console.log(game.rows[0].values);
 // console.log(game.rows[0].solvedValues());
 // console.log(game.rows[0].missingValues());
-console.log(game.cells[11]);
-console.log(game.cells[11].row.missingValues());
-console.log(game.cells[11].possibleValues());
+// console.log(game.cells[11]);
+// console.log(game.cells[11].row.missingValues());
+// console.log(game.cells[11].possibleValues());
+// console.log(game.rows[3].emptyCells);
